@@ -47,7 +47,8 @@ namespace NoteKeeper.Views
             Note = new Note
             {
                 Heading = "Test note",
-                Text = "Text for a test note" 
+                Text = "Text for a test note",
+                Course = CourseList[0]
             };
         }
 
