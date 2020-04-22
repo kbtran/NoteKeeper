@@ -20,8 +20,15 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Entry x:Name="NoteHeading" Placeholder="Note heading" FontSize="Medium" />
-        <Editor x:Name="NoteText" AutoSize="TextChanges" Placeholder="Note text" FontSize="Medium" />
+        <Entry Text="{Binding Heading}" 
+               x:Name="NoteHeading" 
+               Placeholder="Note heading" 
+               FontSize="Medium" />
+        <Editor Text="{Binding Text}"
+                x:Name="NoteText" 
+                AutoSize="TextChanges" 
+                Placeholder="Note text" 
+                FontSize="Medium" />
     </StackLayout>
     
 </ContentPage>
