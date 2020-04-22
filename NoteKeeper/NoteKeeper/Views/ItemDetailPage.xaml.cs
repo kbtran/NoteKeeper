@@ -10,47 +10,27 @@ using NoteKeeper.Services;
 
 namespace NoteKeeper.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class ItemDetailPage : ContentPage
     {
         ItemDetailViewModel viewModel;
 
-        public Note Note { get; set; }
-        
-        public IList<String> CourseList { get; set; }
-
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-            InitializeData();
 
-            BindingContext = Note;
-            NoteCourse.BindingContext = this;
+            this.viewModel = viewModel;
+            BindingContext = this.viewModel;
         }
 
         public ItemDetailPage()
         {
             InitializeComponent();
-            InitializeData();
 
-            BindingContext = Note;
-            NoteCourse.BindingContext = this;
+            viewModel = new ItemDetailViewModel();
+            BindingContext = viewModel;
         }
 
-        async void InitializeData()
-        {
-            var pluralsightDataStore = new MockPluralsightDataStore();
-            CourseList = await pluralsightDataStore.GetCoursesAsync();
-
-            Note = new Note
-            {
-                Heading = "Test note",
-                Text = "Text for a test note",
-                Course = CourseList[0]
-            };
-        }
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {

@@ -12,8 +12,12 @@ namespace NoteKeeper.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Item> DataStore =>
+            DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
 
+        public IPluralsightDataStore PluralsightDataStore =>
+            DependencyService.Get<IPluralsightDataStore>() ?? new MockPluralsightDataStore();
+        
         bool isBusy = false;
         public bool IsBusy
         {
@@ -42,6 +46,7 @@ namespace NoteKeeper.ViewModels
         }
 
         #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
