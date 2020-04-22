@@ -12,16 +12,16 @@
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
         <Picker ItemsSource="{Binding CourseList}"
-                SelectedItem="{Binding Note.Course}"
+                SelectedItem="{Binding NoteCourse}"
                 x:Name="NoteCourse" 
                 Title="Note course" 
                 FontSize="Medium">
         </Picker>
-        <Entry Text="{Binding Note.Heading}" 
+        <Entry Text="{Binding NoteHeading}" 
                x:Name="NoteHeading" 
                Placeholder="Note heading" 
                FontSize="Medium" />
-        <Editor Text="{Binding Note.Text}"
+        <Editor Text="{Binding NoteText}"
                 x:Name="NoteText" 
                 AutoSize="TextChanges" 
                 Placeholder="Note text" 

@@ -31,20 +31,19 @@ namespace NoteKeeper.Views
             BindingContext = viewModel;
         }
 
-
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         public void Cancel_Clicked(object sender, EventArgs eventArgs)
         {
-            DisplayAlert("Cancel option", "Cancel was selected", "Button 1", "Button 2");
+            viewModel.NoteHeading = "XXXXXXX";
+            DisplayAlert("Cancel option",
+                "Heading value is " + viewModel.Note.Heading,
+                "Button 2", "Button 1");
         }
 
         public void Save_Clicked(object sender, EventArgs eventArgs)
         {
-            DisplayAlert("Save option", "Save was clicked", "Button 1", "Button 2");
+            DisplayAlert("Save option", 
+                "Save was clicked", 
+                "Button 2", "Button 1");
         }
     }
 }
