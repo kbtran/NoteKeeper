@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using NoteKeeper.Models;
-using NoteKeeper.Services;
 
 namespace NoteKeeper.ViewModels
 {
@@ -9,6 +8,9 @@ namespace NoteKeeper.ViewModels
     {
         public Note Note { get; set; }
         public IList<String> CourseList { get; set; }
+
+        // True when adding a new note; false when editing existing note
+        public bool IsNewNote { get; set; }
 
         public String NoteHeading
         {
@@ -43,16 +45,13 @@ namespace NoteKeeper.ViewModels
 
         }
 
-        public ItemDetailViewModel(Item item = null)
+        public ItemDetailViewModel(Note note = null)
         {
-            Title = item?.Text;
+            IsNewNote = note == null;
+
+            Title = IsNewNote ? "Add note" : "Edit note";
             InitializeCourseList();
-            Note = new Note
-            {
-                Heading = "Test note",
-                Text = "Text for note in ViewModel",
-                Course = CourseList[0]
-            };
+            Note = note ?? new Note();
         }
 
         async void InitializeCourseList()
